@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,8 +63,8 @@ class PaquetteAlexTestTask1 {
         assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("10.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));
         assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(7,10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));
         assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(Arrays.asList(new Period(12,15), new Period(17,20)))));
-        assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));
-        assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(Arrays.asList(new Period(11,24)))));
+        assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(List.of(new Period(0, 10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));
+        assertInstanceOf(Rate.class, new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(List.of(new Period(11, 24)))));
 
         assertThrows(IllegalArgumentException.class, () -> new Rate(CarParkKind.STUDENT, new BigDecimal("0.0"), new BigDecimal("1.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));
         assertThrows(IllegalArgumentException.class, () -> new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.0"), new ArrayList<Period>(Arrays.asList(new Period(0,5), new Period(6,10))), new ArrayList<Period>(Arrays.asList(new Period(11,15), new Period(16,20)))));

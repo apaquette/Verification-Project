@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PaquetteAlexTestTask2 {
     /*PERIOD TEST START*/
@@ -73,7 +72,7 @@ class PaquetteAlexTestTask2 {
     //WHITE BOX TESTING END
 
     //BLACK BOX TESTING
-    Period DefaultOverlapStartPeriod = new Period(1, 10);
+    final Period DefaultOverlapStartPeriod = new Period(1, 10);
     @Test @DisplayName("Period overlap: Periods overlap, Output TRUE")
     void PeriodOverlap_BlackBox_TestCase1() {
         assertTrue(DefaultOverlapStartPeriod.overlaps(new Period(5, 12)));
@@ -89,8 +88,8 @@ class PaquetteAlexTestTask2 {
     //BLACK BOX TESTING END
 
     //WHITE BOX TESTING
-    @Test @DisplayName("Period occurences: Branch 1T, 2T, 2F, 1F")
-    void PeriodOccurences_WhiteBox_TestCase1(){
+    @Test @DisplayName("Period occurrences: Branch 1T, 2T, 2F, 1F")
+    void PeriodOccurrences_WhiteBox_TestCase1(){
         assertEquals(3, new Period(1, 5).occurences(Arrays.asList(new Period(1,2), new Period(3,6))));
     }
     //WHITE BOX TESTING END
@@ -124,9 +123,9 @@ class PaquetteAlexTestTask2 {
 
     /*RATE TEST START*/
     //BLACK BOX TESTING
-    CarParkKind DefaultCarParkKind = CarParkKind.STUDENT;
-    ArrayList<Period> DefaultNormalPeriods = new ArrayList<>(Arrays.asList(new Period(0,5), new Period(6,10)));
-    ArrayList<Period> DefaultReducedPeriods = new ArrayList<>(Arrays.asList(new Period(11,15), new Period(16,20)));
+    final CarParkKind DefaultCarParkKind = CarParkKind.STUDENT;
+    final ArrayList<Period> DefaultNormalPeriods = new ArrayList<>(Arrays.asList(new Period(0,5), new Period(6,10)));
+    final ArrayList<Period> DefaultReducedPeriods = new ArrayList<>(Arrays.asList(new Period(11,15), new Period(16,20)));
     @Test @DisplayName("Rate Constructor: normalRate and reducedRate above 0")
     void RateConstructor_BlackBox_TestCase1(){
         assertInstanceOf(Rate.class, new Rate(DefaultCarParkKind, new BigDecimal("2.0"), new BigDecimal("1.0"), DefaultNormalPeriods, DefaultReducedPeriods));
@@ -196,7 +195,7 @@ class PaquetteAlexTestTask2 {
     //WHITE BOX TESTING END
 
     //BLACK BOX TESTING
-    Rate testRate = new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(8, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    final Rate testRate = new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(8, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
     @Test @DisplayName("Rate calculate: periodStay is in a free period")
     void RateCalculate_BlackBox_TestCase1(){
         assertEquals(new BigDecimal("0.0"), testRate.calculate(new Period(0, 7)));
