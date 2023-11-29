@@ -99,9 +99,7 @@ public class Rate {
                 if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
                     return BigDecimal.ZERO;
                 }
-                if(total.compareTo(BigDecimal.valueOf(10)) > 0){
-                    total = total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5));
-                }
+                total = total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5));
                 break;
             case CarParkKind.STUDENT:
                 if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
