@@ -279,6 +279,11 @@ class PaquetteAlexTestTask3 {
         assertEquals(new BigDecimal("0"), testRate_Visitor.calculate(new Period(0,10)));
     }
 
+    @Test @DisplayName("Rate calculate: Free for MANAGEMENT is minimum 5")
+    void RateCalculate_BlackBox_TestCase19(){
+        assertEquals(new BigDecimal("5"), testRate_Management.calculate(new Period(0,1)));
+    }
+
     //BLACK BOX TESTING END
 
     //WHITE BOX TESTING
