@@ -107,8 +107,13 @@ public class Rate {
                 }
                 break;
             case CarParkKind.STAFF:
-                if(total.compareTo((BigDecimal.valueOf(10))) > 0){
+                if(total.compareTo(BigDecimal.valueOf(10)) > 0){
                     return BigDecimal.valueOf(10);
+                }
+                break;
+            case CarParkKind.MANAGEMENT:
+                if(total.compareTo(BigDecimal.valueOf(5)) <= 0){
+                    return BigDecimal.valueOf(5);
                 }
                 break;
         }
