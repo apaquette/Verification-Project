@@ -91,8 +91,8 @@ public class Rate {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
 
-        BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
-                this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+        BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
+                            .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
 
         switch(this.kind){
             case CarParkKind.VISITOR:
