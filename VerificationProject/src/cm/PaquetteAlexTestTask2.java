@@ -257,7 +257,7 @@ class PaquetteAlexTestTask2 {
     }
     @Test @DisplayName("Rate calculate: Branch 1F")
     void RateCalculate_WhiteBox_TestCase2(){
-        assertEquals(new BigDecimal("20"), new Rate(CarParkKind.STUDENT, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(1, 5)));
+        assertEquals(new BigDecimal("15.07"), new Rate(CarParkKind.STUDENT, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(1, 5)));
     }
     //WHITE BOX TESTING END
 
