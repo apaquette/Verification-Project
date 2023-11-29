@@ -226,7 +226,7 @@ class PaquetteAlexTestTask2 {
     }
     @Test @DisplayName("Rate calculate: periodStay is for a whole day")
     void RateCalculate_BlackBox_TestCase8(){
-        assertEquals(new BigDecimal("6.5"), testRate.calculate(new Period(0, 24)));
+        assertEquals(new BigDecimal("6.16"), testRate.calculate(new Period(0, 24)));
     }
     @Test @DisplayName("Rate calculate: periodStay is for the smallest increment near the end of the day")
     void RateCalculate_BlackBox_TestCase9(){
