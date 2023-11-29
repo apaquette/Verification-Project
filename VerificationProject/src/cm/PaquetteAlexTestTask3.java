@@ -276,7 +276,7 @@ class PaquetteAlexTestTask3 {
 
     @Test @DisplayName("Rate calculate: Free for VISITOR up to 10")
     void RateCalculate_BlackBox_TestCase18(){
-        assertEquals(new BigDecimal("0"), testRate_Management.calculate(testPeriod));
+        assertEquals(new BigDecimal("0"), testRate_Visitor.calculate(testPeriod));
     }
 
     //BLACK BOX TESTING END
