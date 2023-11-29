@@ -267,6 +267,12 @@ class PaquetteAlexTestTask3 {
         assertEquals(new BigDecimal("10"), testRate16.calculate(testPeriod));
     }
 
+    Rate testRate17 = new Rate(CarParkKind.MANAGEMENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    @Test @DisplayName("Rate calculate: CarParkKind is MANAGEMENT")
+    void RateCalculate_BlackBox_TestCase17(){
+        assertEquals(new BigDecimal("12"), testRate17.calculate(testPeriod));
+    }
+
     //BLACK BOX TESTING END
 
     //WHITE BOX TESTING
