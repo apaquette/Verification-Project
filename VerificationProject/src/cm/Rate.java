@@ -96,7 +96,10 @@ public class Rate {
 
         switch(this.kind){
             case CarParkKind.VISITOR:
-                return BigDecimal.valueOf(0).stripTrailingZeros();
+                if(total.compareTo(BigDecimal.valueOf(10)) > 0){
+                    total = total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5));
+                }
+                break;
             case CarParkKind.STUDENT:
                 if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
                     total = total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5));
