@@ -284,6 +284,11 @@ class PaquetteAlexTestTask3 {
         assertEquals(new BigDecimal("5"), testRate_Management.calculate(new Period(0,1)));
     }
 
+    @Test @DisplayName("Rate calculate: STAFF fee below 10 is same as usual")
+    void RateCalculate_BlackBox_TestCase20(){
+        assertEquals(new BigDecimal("1"), testRate_Management.calculate(new Period(0,1)));
+    }
+
     //BLACK BOX TESTING END
 
     //WHITE BOX TESTING
