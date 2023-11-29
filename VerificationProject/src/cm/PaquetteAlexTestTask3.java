@@ -249,28 +249,34 @@ class PaquetteAlexTestTask3 {
         assertEquals(new BigDecimal("1"), testRate.calculate(new Period(20, 22)));
     }
 
-    Rate testRate14 = new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    Rate testRate_Student = new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    Rate testRate_Visitor = new Rate(CarParkKind.VISITOR, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    Rate testRate_Staff = new Rate(CarParkKind.STAFF, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+    Rate testRate_Management = new Rate(CarParkKind.MANAGEMENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
     Period testPeriod = new Period(0,14);
     @Test @DisplayName("Rate calculate: CarParkKind is STUDENT")
     void RateCalculate_BlackBox_TestCase14(){
-        assertEquals(new BigDecimal("9.79"), testRate14.calculate(testPeriod));
+        assertEquals(new BigDecimal("9.79"), testRate_Student.calculate(testPeriod));
     }
-    Rate testRate15 = new Rate(CarParkKind.VISITOR, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
+
     @Test @DisplayName("Rate calculate: CarParkKind is VISITOR")
     void RateCalculate_BlackBox_TestCase15(){
-        assertEquals(new BigDecimal("1"), testRate15.calculate(testPeriod));
+        assertEquals(new BigDecimal("1"), testRate_Visitor.calculate(testPeriod));
     }
 
-    Rate testRate16 = new Rate(CarParkKind.STAFF, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
     @Test @DisplayName("Rate calculate: CarParkKind is STAFF")
     void RateCalculate_BlackBox_TestCase16(){
-        assertEquals(new BigDecimal("10"), testRate16.calculate(testPeriod));
+        assertEquals(new BigDecimal("10"), testRate_Staff.calculate(testPeriod));
     }
 
-    Rate testRate17 = new Rate(CarParkKind.MANAGEMENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
     @Test @DisplayName("Rate calculate: CarParkKind is MANAGEMENT")
     void RateCalculate_BlackBox_TestCase17(){
-        assertEquals(new BigDecimal("12"), testRate17.calculate(testPeriod));
+        assertEquals(new BigDecimal("12"), testRate_Management.calculate(testPeriod));
+    }
+
+    @Test @DisplayName("Rate calculate: Free for VISITOR up to 10")
+    void RateCalculate_BlackBox_TestCase18(){
+        assertEquals(new BigDecimal("0"), testRate_Management.calculate(testPeriod));
     }
 
     //BLACK BOX TESTING END
