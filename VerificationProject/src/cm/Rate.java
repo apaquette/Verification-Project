@@ -105,6 +105,11 @@ public class Rate {
                     total = total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5));
                 }
                 break;
+            case CarParkKind.STAFF:
+                if(total.compareTo((BigDecimal.valueOf(10))) > 0){
+                    return BigDecimal.valueOf(10);
+                }
+                break;
         }
         return total.stripTrailingZeros();
     }
