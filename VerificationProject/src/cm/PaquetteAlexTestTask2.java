@@ -198,11 +198,11 @@ class PaquetteAlexTestTask2 {
     final Rate testRate = new Rate(CarParkKind.STUDENT, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(8, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
     @Test @DisplayName("Rate calculate: periodStay is in a free period")
     void RateCalculate_BlackBox_TestCase1(){
-        assertEquals(new BigDecimal("0.0"), testRate.calculate(new Period(0, 7)));
+        assertEquals(new BigDecimal("0"), testRate.calculate(new Period(0, 7)));
     }
     @Test @DisplayName("Rate calculate: periodStay is in a normalRate period")
     void RateCalculate_BlackBox_TestCase2(){
-        assertEquals(new BigDecimal("2.0"), testRate.calculate(new Period(8, 10)));
+        assertEquals(new BigDecimal("2"), testRate.calculate(new Period(8, 10)));
     }
     @Test @DisplayName("Rate calculate: periodStay is in a free and reducedRate period")
     void RateCalculate_BlackBox_TestCase3(){
@@ -210,11 +210,11 @@ class PaquetteAlexTestTask2 {
     }
     @Test @DisplayName("Rate calculate: periodStay is in a free and normalRate period")
     void RateCalculate_BlackBox_TestCase4(){
-        assertEquals(new BigDecimal("2.0"), testRate.calculate(new Period(6, 10)));
+        assertEquals(new BigDecimal("2"), testRate.calculate(new Period(6, 10)));
     }
     @Test @DisplayName("Rate calculate: periodStay is in a free and reducedRate period")
     void RateCalculate_BlackBox_TestCase5(){
-        assertEquals(new BigDecimal("1.0"), testRate.calculate(new Period(20, 24)));
+        assertEquals(new BigDecimal("1"), testRate.calculate(new Period(20, 24)));
     }
     @Test @DisplayName("Rate calculate: period stay is in a normalRate and reducedRate periods")
     void RateCalculate_BlackBox_TestCase6(){
@@ -230,11 +230,11 @@ class PaquetteAlexTestTask2 {
     }
     @Test @DisplayName("Rate calculate: periodStay is for the smallest increment near the end of the day")
     void RateCalculate_BlackBox_TestCase9(){
-        assertEquals(new BigDecimal("0.0"), testRate.calculate(new Period(23, 24)));
+        assertEquals(new BigDecimal("0"), testRate.calculate(new Period(23, 24)));
     }
     @Test @DisplayName("Rate calculate: periodStay is for the smallest increment near the start of the day")
     void RateCalculate_BlackBox_TestCase10(){
-        assertEquals(new BigDecimal("0.0"), testRate.calculate(new Period(0, 1)));
+        assertEquals(new BigDecimal("0"), testRate.calculate(new Period(0, 1)));
     }
     @Test @DisplayName("Rate calculate: periodStay is invalid")
     void RateCalculate_BlackBox_TestCase11(){
@@ -242,22 +242,22 @@ class PaquetteAlexTestTask2 {
     }
     @Test @DisplayName("Rate calculate: periodStay is for 2 hours during normalPeriod where normal rate is 1, and outputs 2")
     void RateCalculate_BlackBox_TestCase12(){
-        assertEquals(new BigDecimal("2.0"), testRate.calculate(new Period(8, 10)));
+        assertEquals(new BigDecimal("2"), testRate.calculate(new Period(8, 10)));
     }
     @Test @DisplayName("Rate calculate: periodStay is for 2 hours during reducedPeriod where reduced rate is 0.5, and outputs 1")
     void RateCalculate_BlackBox_TestCase13(){
-        assertEquals(new BigDecimal("1.0"), testRate.calculate(new Period(20, 22)));
+        assertEquals(new BigDecimal("1"), testRate.calculate(new Period(20, 22)));
     }
     //BLACK BOX TESTING END
 
     //WHITE BOX TESTING
     @Test @DisplayName("Rate calculate: Branch 1T")
     void RateCalculate_WhiteBox_TestCase1(){
-        assertEquals(new BigDecimal("0.0"), new Rate(CarParkKind.VISITOR, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(20, 22)));
+        assertEquals(new BigDecimal("0"), new Rate(CarParkKind.VISITOR, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(20, 22)));
     }
     @Test @DisplayName("Rate calculate: Branch 1F")
     void RateCalculate_WhiteBox_TestCase2(){
-        assertEquals(new BigDecimal("20.0"), new Rate(CarParkKind.STUDENT, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(1, 5)));
+        assertEquals(new BigDecimal("20"), new Rate(CarParkKind.STUDENT, new BigDecimal("5.0"), new BigDecimal("2.0"), new ArrayList<>(Arrays.asList(new Period(1, 5), new Period(10,12))), new ArrayList<>(Arrays.asList(new Period(13, 16), new Period(18,20)))).calculate(new Period(1, 5)));
     }
     //WHITE BOX TESTING END
 

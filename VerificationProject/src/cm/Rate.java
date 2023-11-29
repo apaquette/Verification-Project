@@ -88,11 +88,15 @@ public class Rate {
         return isValid;
     }
     public BigDecimal calculate(Period periodStay) {
-        if (this.kind==CarParkKind.VISITOR) return BigDecimal.valueOf(0.0);
+        if (this.kind==CarParkKind.VISITOR) return BigDecimal.valueOf(0);
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
-        return (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
+        BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours))).add(
                 this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
+        if(kind == CarParkKind.STUDENT && total.compareTo(BigDecimal.valueOf(5.5)) > 0){
+            total = total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5));
+        }
+        return total.stripTrailingZeros();
     }
 
 }
