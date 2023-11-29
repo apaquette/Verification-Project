@@ -262,9 +262,9 @@ class PaquetteAlexTestTask3 {
     }
 
     Rate testRate16 = new Rate(CarParkKind.STAFF, new BigDecimal("1.0"), new BigDecimal("0.5"), new ArrayList<>(Arrays.asList(new Period(0, 10), new Period(12,14))), new ArrayList<>(Arrays.asList(new Period(15, 18), new Period(20,22))));
-    @Test @DisplayName("Rate calculate: CarParkKind is VISITOR")
+    @Test @DisplayName("Rate calculate: CarParkKind is STAFF")
     void RateCalculate_BlackBox_TestCase16(){
-        assertEquals(new BigDecimal("12"), testRate16.calculate(testPeriod));
+        assertEquals(new BigDecimal("10"), testRate16.calculate(testPeriod));
     }
 
     //BLACK BOX TESTING END
