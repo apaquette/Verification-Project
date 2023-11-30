@@ -91,6 +91,7 @@ public class Rate {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
 
+        //normal calculation
         BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
                             .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
 
@@ -99,11 +100,10 @@ public class Rate {
                 if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
                     return BigDecimal.ZERO;
                 }
-                total = total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5));
-                break;
+                return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();
             case CarParkKind.STUDENT:
                 if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
-                    total = total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5));
+                    return total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5)).stripTrailingZeros();
                 }
                 break;
             case CarParkKind.STAFF:
