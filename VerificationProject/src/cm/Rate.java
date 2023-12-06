@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Rate {
     private CarParkKind kind;
+    private IRateCalculator rateCalculator;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
     private ArrayList<Period> reduced;
@@ -31,6 +32,7 @@ public class Rate {
             throw new IllegalArgumentException("The periods overlaps");
         }
         this.kind = kind;
+        this.rateCalculator = RateCalculatorFactory.CreateRateCalculator(kind);
         this.hourlyNormalRate = normalRate;
         this.hourlyReducedRate = reducedRate;
         this.reduced = reducedPeriods;
@@ -90,6 +92,8 @@ public class Rate {
     public BigDecimal calculate(Period periodStay) {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
+
+        //return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyNormalRate).stripTrailingZeros();
 
         //normal calculation
         BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
