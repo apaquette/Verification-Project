@@ -101,10 +101,8 @@ public class Rate {
 
         switch(this.kind){
             case CarParkKind.VISITOR:
-                if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
-                    return BigDecimal.ZERO;
-                }
-                return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();
+                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyNormalRate).stripTrailingZeros();
+                //return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();
             case CarParkKind.STUDENT:
                 if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
                     return total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5)).stripTrailingZeros();
