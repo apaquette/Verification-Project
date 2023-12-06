@@ -9,6 +9,6 @@ public class VisitorRateCalculator extends SimpleRateCalculator{
         if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
             return BigDecimal.ZERO;
         }
-        return total;
+        return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();
     }
 }
