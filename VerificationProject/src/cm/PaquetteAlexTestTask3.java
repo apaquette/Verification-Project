@@ -69,6 +69,10 @@ class PaquetteAlexTestTask3 {
     void Period_WhiteBox_TestCase3() {
         assertThrows(IllegalArgumentException.class,() -> new Period(-1, 2));
     }
+    @Test @DisplayName("Period constructor: IntelliJ branch coverage start > 24")
+    void Period_WhiteBox_TestCase4() {
+        assertThrows(IllegalArgumentException.class,() -> new Period(25, 26));
+    }
     //WHITE BOX TESTING END
 
     //BLACK BOX TESTING
