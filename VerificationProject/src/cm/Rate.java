@@ -119,10 +119,11 @@ public class Rate {
                 }
                 break;*/
             case CarParkKind.MANAGEMENT:
-                if(total.compareTo(BigDecimal.valueOf(5)) <= 0){
+                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
+                /*if(total.compareTo(BigDecimal.valueOf(5)) <= 0){
                     return BigDecimal.valueOf(5);
                 }
-                break;
+                break;*/
         }
         return total.stripTrailingZeros();
     }
