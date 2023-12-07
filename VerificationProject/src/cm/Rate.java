@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rate {
-    private CarParkKind kind;
     private IRateCalculator rateCalculator;
     private BigDecimal hourlyNormalRate;
     private BigDecimal hourlyReducedRate;
@@ -31,7 +30,6 @@ public class Rate {
         if (!isValidPeriods(reducedPeriods, normalPeriods)) {
             throw new IllegalArgumentException("The periods overlaps");
         }
-        this.kind = kind;
         this.rateCalculator = RateCalculatorFactory.CreateRateCalculator(kind);
         this.hourlyNormalRate = normalRate;
         this.hourlyReducedRate = reducedRate;
