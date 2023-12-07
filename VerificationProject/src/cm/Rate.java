@@ -93,39 +93,7 @@ public class Rate {
         int normalRateHours = periodStay.occurences(normal);
         int reducedRateHours = periodStay.occurences(reduced);
 
-        //return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyNormalRate).stripTrailingZeros();
-
-        //normal calculation
-        BigDecimal total = (this.hourlyNormalRate.multiply(BigDecimal.valueOf(normalRateHours)))
-                            .add(this.hourlyReducedRate.multiply(BigDecimal.valueOf(reducedRateHours)));
-
-        switch(this.kind){
-            case CarParkKind.VISITOR:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
-                /*if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
-                    return BigDecimal.ZERO;
-                }
-                return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();*/
-            case CarParkKind.STUDENT:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
-                /*if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
-                    return total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5)).stripTrailingZeros();
-                }
-                break;*/
-            case CarParkKind.STAFF:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
-                /*if(total.compareTo(BigDecimal.valueOf(10)) > 0){
-                    return BigDecimal.valueOf(10);
-                }
-                break;*/
-            case CarParkKind.MANAGEMENT:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
-                /*if(total.compareTo(BigDecimal.valueOf(5)) <= 0){
-                    return BigDecimal.valueOf(5);
-                }
-                break;*/
-        }
-        return total.stripTrailingZeros();
+        return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
     }
 
 }
