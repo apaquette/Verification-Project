@@ -101,22 +101,23 @@ public class Rate {
 
         switch(this.kind){
             case CarParkKind.VISITOR:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate).stripTrailingZeros();
+                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
                 /*if(total.compareTo(BigDecimal.valueOf(10)) <= 0){
                     return BigDecimal.ZERO;
                 }
                 return total.subtract(BigDecimal.valueOf(10)).multiply(BigDecimal.valueOf(0.5)).stripTrailingZeros();*/
             case CarParkKind.STUDENT:
-                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate).stripTrailingZeros();
+                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
                 /*if(total.compareTo(BigDecimal.valueOf(5.5)) > 0){
                     return total.subtract(BigDecimal.valueOf(5.5)).multiply(BigDecimal.valueOf(0.66)).add(BigDecimal.valueOf(5.5)).stripTrailingZeros();
                 }
                 break;*/
             case CarParkKind.STAFF:
-                if(total.compareTo(BigDecimal.valueOf(10)) > 0){
+                return rateCalculator.calculate(periodStay, normalRateHours, reducedRateHours, this.hourlyNormalRate, this.hourlyReducedRate);
+                /*if(total.compareTo(BigDecimal.valueOf(10)) > 0){
                     return BigDecimal.valueOf(10);
                 }
-                break;
+                break;*/
             case CarParkKind.MANAGEMENT:
                 if(total.compareTo(BigDecimal.valueOf(5)) <= 0){
                     return BigDecimal.valueOf(5);
