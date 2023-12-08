@@ -1,7 +1,7 @@
 package cm;
 
 public class RateCalculatorFactory {
-    public static IRateCalculator CreateRateCalculator(CarParkKind kind){
+    public static SimpleRateCalculator CreateRateCalculator(CarParkKind kind){
         return switch (kind) {
             case CarParkKind.VISITOR -> new VisitorRateCalculator();
             case CarParkKind.STUDENT -> new StudentRateCalculator();
