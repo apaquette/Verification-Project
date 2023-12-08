@@ -206,6 +206,11 @@ class PaquetteAlexTestTask3 {
         assertThrows(IllegalArgumentException.class, () -> new Rate(DefaultCarParkKind, new BigDecimal("5.0"), new BigDecimal("2.0"), DefaultNormalPeriods, null));
     }
 
+    @Test @DisplayName("Rate Constructor: Reduced periods are null")
+    void RateConstructor_WhiteBox_TestCase10(){
+        assertThrows(IllegalArgumentException.class, () -> new Rate(DefaultCarParkKind, new BigDecimal("5.0"), null, DefaultNormalPeriods, DefaultReducedPeriods));
+    }
+
     //WHITE BOX TESTING END
 
     //BLACK BOX TESTING
