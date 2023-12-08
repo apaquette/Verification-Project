@@ -196,9 +196,14 @@ class PaquetteAlexTestTask3 {
     void RateConstructor_WhiteBox_TestCase7(){
         assertInstanceOf(Rate.class, new Rate(DefaultCarParkKind, new BigDecimal("5.0"), new BigDecimal("2.0"), DefaultNormalPeriods, DefaultReducedPeriods));
     }
-    @Test @DisplayName("Rate Constructor: Branch 1F, 2F, 3F, 4F, 5T")
+    @Test @DisplayName("Rate Constructor: Reduced periods overlap themselves")
     void RateConstructor_WhiteBox_TestCase8(){
         assertThrows(IllegalArgumentException.class, () -> new Rate(DefaultCarParkKind, new BigDecimal("5.0"), new BigDecimal("2.0"), DefaultNormalPeriods, new ArrayList<>(Arrays.asList(new Period(11,15), new Period(10, 13), new Period(16,20)))));
+    }
+
+    @Test @DisplayName("Rate Constructor: Reduced periods are null")
+    void RateConstructor_WhiteBox_TestCase9(){
+        assertThrows(IllegalArgumentException.class, () -> new Rate(DefaultCarParkKind, new BigDecimal("5.0"), new BigDecimal("2.0"), DefaultNormalPeriods, null));
     }
 
     //WHITE BOX TESTING END
