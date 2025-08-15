@@ -1,4 +1,4 @@
-### Verification Project
+# Verification Project
 This project was completed as part of my coursework for **Agile Software Development** at **South East Technological University** in **2023**. It demonstrates my ability to create unit tests and follow test-driven development.
 
 ## Description
